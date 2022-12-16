@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <script src="https://kit.fontawesome.com/a656fffa44.js" crossorigin="anonymous"></script>
+  
+  <title>Frontend Mentor | [chat-app-css-illustration-master]</title>
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    *
+    {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body
+    {
+      background: rgb(245, 245, 245);
+    }
+
+    .main
+    {
+      width: 100%;
+      height: 100vh;
+      background: rgb(245, 245, 245);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .main:before
+    {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 400px;
+      height: 80%;
+      background-color: #4158D0;
+      background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 80%, #C850C0);
+      border-radius: 0 0 200px 200px;
+    }
+
+    .main:after
+    {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: -150px;
+      width: 500px;
+      height: 80%;
+      background: rgba(240, 240, 240, 0.8);
+      border-radius: 250px 250px 0 0;
+    }
+
+    /*  Media ----------------------  */
+    @media (max-width: 480px)
+    {
+      .main
+      {
+        height: auto;
+        padding: 50px 30px;
+      }
+
+      .main:before
+      {
+        left: 0;
+        width: 300px;
+        height: 50%;
+      }
+
+      .main:after
+      {
+        right: -150px;
+        width: 500px;
+        height: 50%;
+        background: rgba(235, 235, 235, 0.8);
+      }
+    }
+
+
+
+
+
+    .content-container
+    {
+      width: 58%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 480px)
+    {
+      .content-container
+      {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+
+
+
+    .phone-screen
+    {
+      width: 300px;
+      height: 560px;
+      background: rgb(240, 240, 240);
+      border: 8px solid #fff;
+      border-radius: 32px;
+      z-index: 2;
+      box-shadow: 18px 18px 30px rgb(225, 225, 225);
+    }
+
+    @media (max-width: 480px)
+    {
+      .phone-screen
+      {
+        width: 290px;
+        height: auto;
+        background: rgb(240, 240, 240);
+        border: 8px solid #fff;
+        border-radius: 32px;
+        z-index: 2;
+        box-shadow: 18px 18px 30px rgb(225, 225, 225);
+      }
+    }
+
+
+    .screen-profile-box
+    {
+      width: 100%;
+      height: 80px;
+      background-color: #4158D0;
+      background-image: linear-gradient(50deg, #4158D0 0%, #C850C0 80%, #C850C0);
+      border-radius: 23px 23px 8px 8px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .screen-profile-box:before
+    {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 24px;
+      background: white;
+      top: -6px;
+      left: 50%;
+      transform: translate(-50%);
+      border-radius: 0 0 14px 14px;
+    }
+
+    .profile-detail-main
+    {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 10px 0;
+      color: white;
+    }
+
+    .profile-detail
+    {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .profile-detail img
+    {
+      width: 40px;
+      height: auto;
+      border-radius: 100%;
+      border: 2px solid white;
+      margin: 0 10px;
+    }
+
+    .profile-detail p
+    {
+      font-size: 12px;
+      line-height: 15px;
+      font-weight: 500;
+    }
+
+    .profile-detail p span
+    {
+      font-size: 10px;
+      color: rgb(220, 220, 220);
+    }
+
+
+
+
+
+
+
+    .screen-chat-box
+    {
+      width: auto;
+      height: calc(100% - 100px - 40px);
+      padding: 8px;
+    }
+
+    .screen-chat-incoming, .screen-chat-outgoing
+    {
+      height: auto;
+    }
+
+    .message
+    {
+      font-size: 10px;
+      font-weight: 500;
+      padding: 6px;
+      border-radius: 8px 8px 8px 2px;
+      display: inline-block;
+      margin: 2px 0;
+      float: right;
+    }
+
+    .screen-chat-incoming
+    {
+      width: 60%;
+      display: inline-block;
+    }
+
+    .screen-chat-outgoing
+    {
+      width: 60%;
+      float: right;
+      display: inline-block;
+      margin: 6px 0;
+    }
+
+    .outgoing-img-list
+    {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .outgoing-img-list img
+    {
+      width: 50px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .screen-chat-incoming .message
+    {
+      background: rgb(235, 235, 235);
+      color: #C850C0;
+    }
+
+    .screen-chat-outgoing .message
+    {
+      background: #fff;
+    }
+
+    .highlight-chat-main
+    {
+      width: 60%;
+      margin-top: 12px;
+    }
+
+    .chat-high-lighted
+    {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      color: #fff;
+      background-color: #4158D0;
+      background-image: linear-gradient(260deg, #4158D0 0%, #C850C0 80%, #C850C0);
+      margin: 6px 0;
+      padding: 6px 8px;
+      border-radius: 8px 8px 8px 2px;
+    }
+
+    .chat-high-lighted p
+    {
+      font-size: 8px;
+    }
+
+    .chat-high-lighted p i
+    {
+      font-size: 10px;
+      margin-right: 10px;
+    }
+
+    .chat-high-lighted span
+    {
+      font-size: 14px;
+    }
+
+
+
+
+
+
+    .screen-text-box
+    {
+      width: 100%;
+      height: 60px;
+      background: white;
+      border-radius: 0 0 24px 24px;
+      padding: 10px;
+      background: transparent;
+    }
+
+    .input-box
+    {
+      width: 100%;
+      height: 100%;
+      border-radius: 40px;
+      background: white;
+      box-shadow: 0px 0px 12px rgba(210, 210, 210, 0.2);
+      padding: 0 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .input-box input
+    {
+      width: 100%;
+      margin-right: 10px;
+      border: none;
+      outline: none;
+      font-weight: 600;
+      opacity: 0.4;
+      padding-left: 8px;
+    }
+
+    .input-box input:focus
+    {
+      opacity: 1;
+    }
+
+    .input-box i
+    {
+      font-size: 16px;
+      background: #000066;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 100%;
+    }
+
+
+
+
+    .content-container .main-content
+    {
+      width: 50%;
+      z-index: 2;
+    }
+
+    .content-container .main-content h1
+    {
+      margin-bottom: 12px;
+    }
+
+    .content-container .main-content p
+    {
+      font-size: 14px;
+      color: rgb(120, 120, 120);
+    }
+
+    @media (max-width: 480px)
+    {
+      .content-container .main-content
+      {
+        width: 100%;
+        text-align: center;
+        z-index: 2;
+        margin-top: 50px;
+      }
+    }
+
+
+
+    .attribution 
+    { 
+      font-size: 12px; 
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .attribution a 
+    { 
+      font-size: 14px;
+      color: hsl(228, 45%, 44%);
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+
+
+
+<div class="main">
+    
+  <div class="content-container">
+    <div class="phone-screen">
+      <div class="screen-profile-box">
+        <div class="profile-detail-main">
+          <div class="profile-detail">
+            <i class="fa-solid fa-angle-left"></i>
+            <img src="images/avatar.jpg">
+            <p>Samuel Green<br><span>Available to Walk</span></p>
+          </div>
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+      </div>
+
+      <div class="screen-chat-box">
+        <div class="screen-chat-incoming">
+          <p class="message">That sounds great. I’d be happy with that.</p>
+          <p class="message">Could you send over some pictures of your dog, please?</p>
+        </div>
+        <div class="screen-chat-outgoing">
+          <div class="outgoing-img-list">
+            <img src="images/dog-image-1.jpg">
+            <img src="images/dog-image-2.jpg">
+            <img src="images/dog-image-3.jpg">
+          </div>
+          <p class="message">Here are a few pictures. She’s a happy girl!</p>
+          <p class="message">Can you make it?</p>
+        </div>
+        <div class="screen-chat-incoming">
+          <p class="message">She looks so happy! The time we discussed works. How long shall I take her out for?</p>
+        </div>
+
+        <div class="highlight-chat-main">
+          <div class="chat-high-lighted">
+            <p><i class="fa-regular fa-circle"></i>
+            30 minute walk</p>
+            <span>$29</span>
+          </div>
+
+          <div class="chat-high-lighted">
+            <p><i class="fa-regular fa-circle"></i>
+            1 hour walk</p>
+            <span>$49</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen-text-box">
+        <div class="input-box">
+          <input type="text" placeholder="Type a message...">
+          <i class="fa-solid fa-angle-right"></i>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="main-content">
+      <h1>Simple booking</h1>
+      <p>Stay in touch with our dog walkers through the chat interface. This makes it easy to 
+        discuss arrangements and make bookings. Once the walk has been completed you can rate 
+        your walker and book again all through the chat.</p>
+    </div>
+  </div>
+
+</div>
+
+
+  
+<div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+</div>
+
+</body>
+</html>
